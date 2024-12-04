@@ -3,6 +3,6 @@ import { Button } from "./ui/Button";
 
 export function FloatButton({ ...props }) {
     return (
-        <Button className="absolute right-2 bottom-2.5 z-30 sm:static rounded-full px-2" {...props}><PlusIcon className="size-5" /></Button>
+        <Button className="absolute right-5 -bottom-5 z-30 sm:static rounded-full px-2" {...props}><PlusIcon className="size-6 sm:size-5" /></Button>
     )
 }

@@ -1,14 +1,10 @@
-import { Root as Dialog } from "@radix-ui/react-dialog";
-
 export function Container({ children }: { children: React.ReactNode }) {
     return (
-        <Dialog>
-            <div className="relative container mx-auto bg-zinc-900 sm:my-5 rounded-md ">
-                <div className="flex flex-col p-5 gap-4 ">
-                    {children}
-                    <br className="my-2 sm:my-0 sm:w-0" />
-                </div>
-            </div>
-        </Dialog>
+        <main className="relative container mx-auto bg-zinc-900 sm:my-5 rounded-md ">
+            <section className="flex flex-col p-5 gap-5">
+                {children}
+                <br className="my-1 sm:my-0 sm:w-0" />
+            </section>
+        </main>
     )
 }
