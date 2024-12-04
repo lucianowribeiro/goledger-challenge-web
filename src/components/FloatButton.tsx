@@ -1,9 +1,8 @@
-import { GoPlus as Plus } from "react-icons/go";
+import { GoPlus as PlusIcon } from "react-icons/go";
 import { Button } from "./ui/Button";
 
-export function FloatButton() {
+export function FloatButton({ ...props }) {
     return (
-        <Button className="
-        absolute right-4 bottom-4 z-30 sm:static rounded-full px-2"><Plus className="size-5" /></Button>
+        <Button className="absolute right-2 bottom-2.5 z-30 sm:static rounded-full px-2" {...props}><PlusIcon className="size-5" /></Button>
     )
 }

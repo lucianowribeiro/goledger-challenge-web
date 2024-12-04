@@ -1,5 +1,6 @@
 import { FloatButton } from "./FloatButton";
 import { SearchBar } from "./SearchBar";
+import { Trigger as DialogTrigger } from "@radix-ui/react-dialog";
 
 export function Header() {
     return (
@@ -9,7 +10,9 @@ export function Header() {
                     <img src="../logo.svg" className="size-5 bg-white rounded-full" alt="go leader logo" />
                     <p className="font-semibold"> Go Ledger - Challenge</p>
                 </div>
-                <FloatButton />
+                <DialogTrigger asChild>
+                    <FloatButton />
+                </DialogTrigger>
             </div>
             <SearchBar />
         </>
