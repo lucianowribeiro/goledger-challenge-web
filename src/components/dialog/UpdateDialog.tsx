@@ -3,7 +3,7 @@ import { Input } from "../ui/Input";
 import { IoMdText as TextIcon } from "react-icons/io";
 
 type UpdateDialogProps = {
-    mediaType: string
+    assetType: string
     title: string
 }
 export function UpdateDialog() {

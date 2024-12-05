@@ -1,7 +1,7 @@
-import { token } from '../infra/api'
-import type { MediaResponse } from '../../components/ListMediaTable'
+import { token } from '../infra/api/env'
+import type { AssetType } from '../infra/api/interfaces'
 
-export async function getMediaByType({ mediaType }: { mediaType: string }) {
+export async function getAssetByType({ assetType }: { assetType: AssetType }) {
   const response = await fetch(
     'http://ec2-54-91-215-149.compute-1.amazonaws.com/api/query/search',
     {
@@ -13,14 +13,14 @@ export async function getMediaByType({ mediaType }: { mediaType: string }) {
       body: JSON.stringify({
         query: {
           selector: {
-            '@assetType': mediaType || 'song',
+            '@assetType': assetType,
           },
         },
       }),
     }
   )
 
-  const data: MediaResponse = await response.json()
+  const data = await response.json()
 
   if (data.error) console.error(data)
   return data

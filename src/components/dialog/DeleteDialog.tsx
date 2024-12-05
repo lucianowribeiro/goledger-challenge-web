@@ -1,7 +1,7 @@
 import { DialogContent } from "../ui/Dialog";
 
 type DeleteDialogProps = {
-    mediaType: string
+    assetType: string
     title: string
 }
 export function DeleteDialog() {
