@@ -5,12 +5,12 @@ export function SearchBar() {
     return (
         <div className="flex flex-col sm:flex-row gap-4 sm:gap-0 items-center sm:items-start sm:justify-between" >
             <div className="flex justify-center gap-3 flex-wrap">
-                <Button>Playlists</Button>
-                <Button>Podcasts</Button>
-                <Button>Albuns</Button>
+                <Button className="">Songs</Button>
                 <Button>Artists</Button>
+                <Button>Albums</Button>
+                <Button>Playlists</Button>
             </div>
-            <SearchInput assetType="music" />
+            <SearchInput mediaType="music" />
         </div>
     )
 }

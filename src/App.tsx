@@ -1,13 +1,16 @@
 import { Container } from "./components/Container"
 import { Header } from "./components/Header"
-import { ListTable } from "./components/ListTable"
+import { ListMediaTable } from "./components/ListMediaTable"
+import 'dayjs/locale/pt-br'
+import dayjs from 'dayjs'
+dayjs.locale('pt-br')
 
 function App() {
 
   return (
     <Container>
       <Header />
-      <ListTable />
+      <ListMediaTable />
     </Container >
   )
 }
