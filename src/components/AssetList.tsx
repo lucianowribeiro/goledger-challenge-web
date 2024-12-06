@@ -1,6 +1,6 @@
-import { useList } from "../features/list/hooks"
-import type { AssetListVariants, ListState } from "../features/list/interfaces"
-import type { AssetType } from "../http/infra/api/interfaces"
+import { useList } from "../containers/ListAssetContainer/hooks"
+import type { AssetListVariants, ListState } from "../containers/ListAssetContainer/interfaces"
+import type { AssetType } from "../api/interfaces"
 import { ActionButtons } from "./ActionButtons"
 
 
@@ -40,7 +40,7 @@ export function AssetList() {
                 <p className="font-bold text-xs w-1/4 text-center">Açoes</p>
             </div>
             <hr className="border-zinc-700" />
-            
+
             {/* {listState?.assets && <AssetListData assets={listState.assets} />} */}
         </section >
     )

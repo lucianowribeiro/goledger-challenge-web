@@ -1,8 +1,8 @@
 import { Fragment } from "react/jsx-runtime";
 import { SearchInput } from "./SearchInput";
 import { Button } from "./ui/Button";
-import type { AssetType } from "../http/infra/api/interfaces";
-import { useTypeToogle } from "../features/toogle/hooks";
+import type { AssetType } from "../api/interfaces";
+import { useTypeToogle } from "../containers/AssetTypeToogleContainer/hooks";
 
 export const assetTypesMapping = {
     song: 'Musicas',

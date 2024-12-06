@@ -1,5 +1,5 @@
 import type { PayloadAction } from '@reduxjs/toolkit'
-import type { AssetType } from '../../http/infra/api/interfaces'
+import type { AssetType } from '../../api/interfaces'
 
 export interface ToggleState {
   assetType: AssetType

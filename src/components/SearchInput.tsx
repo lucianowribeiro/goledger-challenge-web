@@ -1,4 +1,4 @@
-import type { AssetType } from "../http/infra/api/interfaces";
+import type { AssetType } from "../api/interfaces";
 import { Input } from "./ui/Input";
 import { CiSearch as SearchIcon } from "react-icons/ci";
 

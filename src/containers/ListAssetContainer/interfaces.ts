@@ -5,7 +5,7 @@ import type {
   AssetListPlaylistResponse,
   AssetListSongResponse,
   AssetType,
-} from '../../http/infra/api/interfaces'
+} from '../../api/interfaces'
 
 export type AssetListVariants =
   | AssetListSongResponse['result']
@@ -19,8 +19,10 @@ export interface ListState {
     artist: AssetListArtistResponse[]
     album: AssetListAlbumResponse[]
     playlist: AssetListPlaylistResponse[]
-  }
+  } | []
   assetId: string | null
+  status: 'idle' | 'pending' | 'succeeded' | 'failed'
+  error: string | null
 }
 
 export interface ListActions

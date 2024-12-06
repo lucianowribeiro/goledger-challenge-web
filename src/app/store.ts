@@ -1,6 +1,6 @@
 import { type Action, configureStore, type ThunkAction } from '@reduxjs/toolkit'
-import toogleReducer from '../features/toogle/toogleSlice'
-import listReducer from '../features/list/listSlice'
+import toogleReducer from '../containers/AssetTypeToogleContainer/reducer'
+import listReducer from '../containers/ListAssetContainer/reducer'
 
 export const store = configureStore({
   reducer: {
@@ -14,9 +14,4 @@ export type RootState = ReturnType<AppStore['getState']>
 
 export type AppDispatch = AppStore['dispatch']
 
-export type AppThunk<ThunkReturnType = void> = ThunkAction<
-  ThunkReturnType,
-  RootState,
-  unknown,
-  Action
->
+export type AppThunk = ThunkAction<void, RootState, unknown, Action>
