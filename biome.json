@@ -32,7 +32,8 @@
       },
       "suspicious": {
         "noArrayIndexKey": "info"
-      }
+      },
+      "performance": { "noAccumulatingSpread": "off" }
     }
   },
   "files": {

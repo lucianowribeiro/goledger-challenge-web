@@ -14,24 +14,18 @@ export type AssetListVariants =
   | AssetListPlaylistResponse['result']
 
 export interface ListState {
-  assetList: Record<AssetType, AssetListVariants> | null
+  assets: {
+    song: AssetListSongResponse[]
+    artist: AssetListArtistResponse[]
+    album: AssetListAlbumResponse[]
+    playlist: AssetListPlaylistResponse[]
+  }
+  assetId: string | null
 }
 
 export interface ListActions
   extends PayloadAction<{
-    result: Record<AssetType, AssetListVariants> | null
+    result: AssetListVariants
+    assetType: AssetType
+    assetId?: string
   }> {}
-
-/*   {
-    '@assetType': AssetType
-    '@key': string
-    '@lastTouchBy': string
-    '@lastTx': string
-    '@lastUpdated': string
-    name: string
-    album: {
-      '@assetType': AssetType
-      '@key': string
-    }
-  }[]
-  assetType: AssetType */

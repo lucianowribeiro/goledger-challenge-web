@@ -1,45 +1,29 @@
-import { useDispatch } from 'react-redux'
-import type { AssetType } from '../../http/infra/api/interfaces'
 import { useSelectors } from '../../app/hooks'
-import { useTypeToogle } from '../toogle/hooks'
+import { useDispatch } from 'react-redux'
+import { listAssetByType } from './listSlice'
+import { getAllssetByType } from '../../http/routes/getAllAssetsByType'
+import { useEffect } from 'react'
 
 export const useList = () => {
-  /*   const dispatch = useDispatch() */
+  const dispatch = useDispatch()
 
-  const { assetType } = useTypeToogle()
-  console.log(assetType)
+  const { assets } = useSelectors(state => state.list)
+  const { assetType } = useSelectors(state => state.toggle)
 
-  /*  const { data, isLoading } = useQuery<AssetListTypeResponse>({
-    queryKey: ['assetTypeList'],
-    staleTime: 1000000 * 60,
-    queryFn: () => getAllAssetsByType({ assetType }),
-  }) */
-
-  /*   dispatch(
-    listAssetType({
-      result: [
-        {
-          '@assetType': 'song',
-          '@key': 'dskdklsdkamds',
-          '@lastTouchBy': 'dsddsdssd',
-          '@lastTx': 'dadada',
-          '@lastUpdated': '22/02/2021',
-          name: 'ddssadasas',
-          album: {
-            '@assetType': 'song',
-            '@key': 'song:454544',
-          },
-        },
-      ],
-      assetType: assetType,
+  useEffect(() => {
+    getAllssetByType({ assetType }).then(data => {
+      if (!data) return
+      dispatch(
+        listAssetByType({
+          result: data,
+          assetType,
+        })
+      )
     })
-  )
- */
-  const { assetList } = useSelectors(state => state.list)
+  }, [assetType, dispatch])
 
   return {
     /* isLoading ,*/
-    assetType: 'song' as AssetType,
-    assetList,
+    assets: assets[assetType],
   }
 }

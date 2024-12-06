@@ -2,10 +2,9 @@ import type { assetTypesMapping } from '../../../components/SearchBar'
 
 export type AssetType = keyof typeof assetTypesMapping
 
-interface Response<T> {
+export interface Response<T> {
   result: T[]
-  error?: string
-  status?: string
+  metadata: null
 }
 
 export interface AssetListResponse<T>

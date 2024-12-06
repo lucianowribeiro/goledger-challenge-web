@@ -1,8 +1,15 @@
 import { createSlice } from '@reduxjs/toolkit'
-import type { ListActions, ListState } from './interfaces'
+import type { AssetListVariants, ListActions, ListState } from './interfaces'
+import type { AssetType } from '../../http/infra/api/interfaces'
 
 const initialState: ListState = {
-  assetList: null,
+  assets: {
+    song: [],
+    artist: [],
+    album: [],
+    playlist: [],
+  },
+  assetId: null,
 }
 
 const listSlice = createSlice({
@@ -10,7 +17,16 @@ const listSlice = createSlice({
   initialState,
   reducers: {
     listAssetByType: (state, action: ListActions) => {
-      state.assetList = action.payload.result
+      if (!action.payload || !action.payload.result) return
+
+      state.assets = {
+        ...state.assets,
+        [action.payload.assetType]: action.payload.result,
+      }
+
+      if (action.payload.assetId === undefined) return
+
+      state.assetId = action.payload.assetId
     },
   },
 })
