@@ -1,11 +1,11 @@
 import { type Action, configureStore, type ThunkAction } from '@reduxjs/toolkit'
-import toogleReducer from '../containers/AssetTypeToogleContainer/reducer'
+import selectReducer from '../containers/SelectedAssetContainer/reducer'
 import listReducer from '../containers/ListAssetContainer/reducer'
 
 export const store = configureStore({
   reducer: {
     list: listReducer,
-    toggle: toogleReducer,
+    select: selectReducer,
   },
 })
 

@@ -1,7 +1,6 @@
-import { useList } from "../containers/ListAssetContainer/hooks"
-import type { AssetListVariants, ListState } from "../containers/ListAssetContainer/interfaces"
+import { useList } from "../../containers/ListAssetContainer/hooks"
+import type { AssetListVariants } from "../../containers/ListAssetContainer/interfaces"
 import { ActionButtons } from "./ActionButtons"
-import type { AssetType } from '../api/interfaces';
 import dayjs from "dayjs";
 
 function AssetListData({ assets }: { assets: AssetListVariants }) {
@@ -10,10 +9,10 @@ function AssetListData({ assets }: { assets: AssetListVariants }) {
     return assets.map((asset) => {
         return (
             <div key={asset["@key"]} className="flex flex-col gap-2">
-                <div className="flex items-center flex-wrap">
-                    <p className="font-bold text-xs capitalize text-ellipsis text-center w-1/4">{asset.name}</p>
-                    <p className="font-bold text-xs text-center w-1/4">{dateConvert(asset["@lastUpdated"])}</p>
-                    <p className="font-bold text-xs text-center w-1/4 capitalize text-ellipsis">{asset["@key"].split(":")[0]}</p>
+                <div className="flex items-center flex-wrap cursor-pointer">
+                    <p className="font-semibold text-xs capitalize text-ellipsis text-center w-1/4">{asset.name || 'aaa'}</p>
+                    <p className="font-semibold text-xs text-center w-1/4">{dateConvert(asset["@lastUpdated"] || 'aaa')}</p>
+                    <p className="font-semibold text-xs text-center w-1/4 capitalize text-ellipsis">{asset["@key"].split(":")[0] || 'aaa'}</p>
                     <ActionButtons />
 
                 </div>

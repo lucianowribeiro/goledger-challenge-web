@@ -1,5 +1,5 @@
-import { CreateDialog } from "./dialog/CreateDialog";
-import { FloatButton } from "./FloatButton";
+import { CreateDialog } from "../dialog/CreateDialog";
+import { FloatButton } from "../ui/FloatButton";
 import { SearchBar } from "./SearchBar";
 import { Trigger as DialogTrigger, Root as Dialog } from "@radix-ui/react-dialog";
 

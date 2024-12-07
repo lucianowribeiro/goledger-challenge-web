@@ -7,7 +7,10 @@ type DialogContentProps = {
     title: string,
     description: string,
     content?: ReactNode
+
+
 }
+
 export function DialogContent({ title, description, content }: DialogContentProps) {
     return (
         <DialogPortal >
@@ -22,8 +25,8 @@ export function DialogContent({ title, description, content }: DialogContentProp
                         <DialogDescription className="text-sm">{description}</DialogDescription>
                         {content}
                         <div className="flex gap-5 justify-evenly sm:justify-center">
-                            <DialogClose asChild><Button className="w-20">Fechar</Button></DialogClose>
-                            <Button className="bg-zinc-600 hover:bg-zinc-500/75 active:bg-zinc-500/85 w-36">Confirmar</Button>
+                            <DialogClose asChild><Button variant="tertiary" className="w-20">Fechar</Button></DialogClose>
+                            <Button variant="secondary" className=" w-36">Confirmar</Button>
                         </div>
                     </div>
 

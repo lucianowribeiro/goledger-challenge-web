@@ -1,4 +1,4 @@
-import type { assetTypesMapping } from '../components/SearchBar'
+import type { assetTypesMapping } from '../components/common/SearchBar'
 
 export type AssetType = keyof typeof assetTypesMapping
 

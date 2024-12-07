@@ -1,11 +1,11 @@
-import { Button } from "./ui/Button";
+import { Button } from "../ui/Button";
 import { MdDelete as DeleteIcon } from "react-icons/md";
 import { FaPen as UpdateIcon } from "react-icons/fa";
 import { Trigger } from "@radix-ui/react-dialog";
 import { Root as Dialog } from "@radix-ui/react-dialog";
-import { UpdateDialog } from "./dialog/UpdateDialog";
-import { DeleteDialog } from "./dialog/DeleteDialog";
-import { twMerge } from "tailwind-merge";
+import { UpdateDialog } from "../dialog/UpdateDialog";
+import { DeleteDialog } from "../dialog/DeleteDialog";
+
 export function ActionButtons() {
     return (
         <div className="flex gap-3 w-1/4 justify-center">

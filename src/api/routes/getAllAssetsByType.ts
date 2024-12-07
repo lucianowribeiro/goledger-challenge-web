@@ -1,5 +1,5 @@
 import type { AssetListVariants } from '../../containers/ListAssetContainer/interfaces'
-import { token } from '../../infra/env'
+import { token } from '../../config/env'
 import type { AssetType } from '../../api/interfaces'
 import { client } from '../client'
 

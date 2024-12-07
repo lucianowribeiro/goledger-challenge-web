@@ -1,5 +1,5 @@
-import type { AssetType } from "../api/interfaces";
-import { Input } from "./ui/Input";
+import type { AssetType } from "../../api/interfaces";
+import { Input } from "../ui/Input";
 import { CiSearch as SearchIcon } from "react-icons/ci";
 
 export function SearchInput({ assetType }: { assetType: AssetType }) {

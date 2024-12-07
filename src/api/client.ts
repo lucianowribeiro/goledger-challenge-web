@@ -1,4 +1,4 @@
-import { token } from '../infra/env'
+import { token } from '../config/env'
 
 const BASE_URL = 'http://ec2-54-91-215-149.compute-1.amazonaws.com/api/'
 

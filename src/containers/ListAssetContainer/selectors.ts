@@ -1,8 +1,8 @@
-import type { RootState } from '../../app/store'
+import type { RootState } from '../../redux/store'
 
 export const selectAllAssetsByType = (state: RootState) =>
-  state.list.assets[state.toggle.assetType] &&
-  state.list.assets[state.toggle.assetType]
+  state.list.assets[state.select.assetType] &&
+  state.list.assets[state.select.assetType]
 export const selectLoading = (state: RootState) =>
   state.list.status === 'pending'
 
