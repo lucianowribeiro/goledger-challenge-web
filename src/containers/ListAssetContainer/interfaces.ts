@@ -6,6 +6,7 @@ import type {
   AssetListSongResponse,
   AssetType,
 } from '../../api/interfaces'
+import { assetTypesMapping } from '../../components/SearchBar'
 
 export type AssetListVariants =
   | AssetListSongResponse['result']
@@ -15,11 +16,8 @@ export type AssetListVariants =
 
 export interface ListState {
   assets: {
-    song: AssetListSongResponse[]
-    artist: AssetListArtistResponse[]
-    album: AssetListAlbumResponse[]
-    playlist: AssetListPlaylistResponse[]
-  } | []
+    [Key in AssetType]?: AssetListVariants
+  }
   assetId: string | null
   status: 'idle' | 'pending' | 'succeeded' | 'failed'
   error: string | null

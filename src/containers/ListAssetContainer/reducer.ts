@@ -3,7 +3,7 @@ import type { ListActions, ListState } from './interfaces'
 import { listAssetByType } from './actions'
 
 const initialState: ListState = {
-  assets: [],
+  assets: {},
   assetId: null,
   status: 'idle',
   error: null,

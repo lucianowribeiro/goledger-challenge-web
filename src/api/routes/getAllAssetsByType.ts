@@ -1,28 +1,20 @@
 import type { AssetListVariants } from '../../containers/ListAssetContainer/interfaces'
 import { token } from '../../infra/env'
 import type { AssetType } from '../../api/interfaces'
+import { client } from '../client'
 
 export async function getAllAssetByType({
   assetType,
 }: { assetType: AssetType }) {
-  const response = await fetch(
-    'http://ec2-54-91-215-149.compute-1.amazonaws.com/api/query/search',
-    {
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Basic ${token()}`,
-      },
-      method: 'POST',
-      body: JSON.stringify({
-        query: {
-          selector: {
-            '@assetType': assetType,
-          },
+  const data = await client.POST({
+    payload: {
+      query: {
+        selector: {
+          '@assetType': assetType,
         },
-      }),
-    }
-  )
-
-  const data = await response.json()
+      },
+    },
+    url: 'query/search',
+  })
   return data.result
 }

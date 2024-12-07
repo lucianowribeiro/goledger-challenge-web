@@ -14,7 +14,7 @@ export interface AssetListResponse<T>
       '@key': string
       '@lastTouchBy': string
       '@lastTx': string
-      '@lastUpdated': string
+      '@lastUpdated': Date
       name: string
     } & T
   > {}

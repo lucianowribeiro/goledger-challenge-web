@@ -5,9 +5,10 @@ import { Trigger } from "@radix-ui/react-dialog";
 import { Root as Dialog } from "@radix-ui/react-dialog";
 import { UpdateDialog } from "./dialog/UpdateDialog";
 import { DeleteDialog } from "./dialog/DeleteDialog";
+import { twMerge } from "tailwind-merge";
 export function ActionButtons() {
     return (
-        <div className="flex gap-3">
+        <div className="flex gap-3 w-1/4 justify-center">
             <Dialog>
                 <Trigger asChild>
                     <Button>
