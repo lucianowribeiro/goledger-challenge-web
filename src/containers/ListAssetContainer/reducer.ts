@@ -36,10 +36,9 @@ const listSlice = createSlice({
 
           state.assetType = assetType
 
-          if (!assetName) return
+          state.assetName = !assetName ? null : assetName
 
-          state.assetName = assetName
-
+          console.log(state.assetName)
           if (!limit) return
 
           state.limit = limit

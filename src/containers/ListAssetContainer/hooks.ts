@@ -21,17 +21,16 @@ export const useList = () => {
     dispatch(
       searchAsset({
         assetType,
-        assetName: assetNameSelected ?? undefined,
         limit: limitSelected ?? undefined,
       })
     )
-  }, [assetType, dispatch, assetNameSelected, limitSelected])
+  }, [assetType, dispatch, limitSelected])
 
   const handleSearchAssetByName = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
       dispatch(
         searchAsset({
-          assetName: e.target.value,
+          assetName: e.target.value === '' ? undefined : e.target.value,
           limit: limitSelected ?? undefined,
           assetType,
         })
@@ -44,7 +43,7 @@ export const useList = () => {
     ({ limit }: { limit: number }) => {
       dispatch(
         searchAsset({
-          assetName: assetNameSelected ?? undefined,
+          assetName: assetNameSelected === null ? undefined : assetNameSelected,
           limit,
           assetType,
         })
