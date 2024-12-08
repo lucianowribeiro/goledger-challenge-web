@@ -9,8 +9,8 @@ function AssetListData({ assets, handleClickSelectAsset }: { assets: AssetListVa
 
     return assets.map((asset) => {
         return (
-            <div key={asset["@key"]} className="flex flex-col gap-2">
-                <div className="flex items-center flex-wrap cursor-pointer  hover:bg-zinc-800/75 active:bg-zinc-800/95" onClick={() => { handleClickSelectAsset({ assetName: asset.name }) }} onKeyUp={() => { handleClickSelectAsset({ assetName: asset.name }) }}>
+            <div key={asset["@key"]} className="flex flex-col">
+                <div className="flex items-center flex-wrap cursor-pointer h-12 hover:bg-zinc-800/75 active:bg-zinc-800/95" onClick={() => { handleClickSelectAsset({ assetName: asset.name }) }} onKeyUp={() => { handleClickSelectAsset({ assetName: asset.name }) }}>
                     <p className="font-semibold text-xs capitalize truncate text-center w-1/4 ">{asset.name || 'aaa'}</p>
                     <p className="font-semibold text-xs text-center w-1/4 truncate">{dateConvert(asset["@lastUpdated"] || 'aaa')}</p>
                     <p className="font-semibold text-xs text-center w-1/4 truncate capitalize  ">{asset["@key"].split(":")[0] || 'aaa'}</p>
@@ -29,7 +29,7 @@ export function AssetList() {
     const { handleClickSelectAsset } = useSelectAsset();
     if (!assets) return
     return (
-        <section className="flex flex-col gap-3 ">
+        <section className="flex flex-col gap-1 ">
             <div className="flex">
                 <p className="font-bold text-xs w-1/4 text-center">Titulo</p>
                 <p className="font-bold text-xs w-1/4 text-center">Data</p>

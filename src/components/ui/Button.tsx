@@ -13,7 +13,7 @@ const button = tv({
         },
         size: {
             default: "py-2 px-3",
-            float: "px-2 py-2"
+            float: "px-2 py-2 rounded-full"
 
         }
     },

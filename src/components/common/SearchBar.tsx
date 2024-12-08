@@ -18,7 +18,7 @@ export function SearchBar() {
     const { handleClickSelectAsset, assetType } = useSelectAsset()
     const { handleSearchAssetByName, handleSearchAssetByLimit } = useList()
     return (
-        <div className="flex flex-col sm:flex-row gap-4 sm:gap-0 items-center sm:items-start sm:justify-between" >
+        <div className="flex flex-col lg:flex-row gap-4 lg:gap-0 items-center lg:items-start lg:justify-between" >
             <div className="flex justify-center gap-3 flex-wrap">
                 {Object.entries(assetTypesMapping).map(([key, assetType]) => {
                     return (
@@ -32,7 +32,7 @@ export function SearchBar() {
                     )
                 })}
             </div>
-            <div className="flex flex-col gap-5 sm:flex-row sm:gap-10">
+            <div className="flex flex-col gap-5 lg:flex-row lg:gap-10">
                 <LimitActions handleSearchByLimit={handleSearchAssetByLimit} />
                 <SearchInput assetType={assetType} onChange={handleSearchAssetByName} />
             </div>
