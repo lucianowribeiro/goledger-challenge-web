@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { Button } from "./Button";
 import { Input } from "./Input";
 import { IoIosShuffle as ShuffleIcon } from "react-icons/io";
 import { IoIosSkipBackward as BackwardIcon } from "react-icons/io";
@@ -9,19 +8,20 @@ import { IoMdRepeat as RepeatIcon } from "react-icons/io";
 import { IoIosPause as PauseIcon } from "react-icons/io";
 import { IoMdVolumeHigh as VolumeIcon } from "react-icons/io";
 import { IoIosMusicalNotes as MusicalIcon } from "react-icons/io";
+import { assetTypesMapping } from "../common/SearchBar";
+import type { AssetType } from "../../api/interfaces";
 
-export function MultimediaFooter({ assetName, assetType = 'Song' }: { assetName: string, assetType: string }) {
+export function MultimediaFooter({ assetName, assetType }: { assetName: string, assetType: AssetType }) {
     const [playing, setPlaying] = useState<boolean>(false)
     return (
         <div className="fixed z-10 bottom-0 right-0 bg-zinc-950 px-10 w-full py-5">
             <div className="flex justify-evenly gap-6">
-                <div className="flex flex-col gap-2 items-center cursor-pointer w-1/11">
+                <div className="flex flex-col gap-2 items-center cursor-pointer ">
                     <MusicalIcon className="size-6 text-zinc-200 hover:text-zinc-50 active:text-green-600" />
-                    <span className="flex flex-col gap-2 text-xs sm:flex-row font-semibold text-zinc-200 hover:text-zinc-50 hover:font-bold capitalize ">
-                        <span className="">{assetName || 'Nenhuma música selecionada'}
-                        </span>
-                        <span className="font-bold  text-center">{assetType}</span>
-                    </span>
+                    <p className="flex flex-col gap-2 text-xs sm:flex-row font-semibold text-zinc-200 hover:text-zinc-50 capitalize w-44 truncate hover:font-bold">
+                        {assetName || `Nenhum(a) ${assetTypesMapping[assetType]} selecionado(a)`}
+
+                    </p>
                 </div>
                 <div className="flex flex-col gap-1 sm:w-1/4 items-center">
                     <div className="flex justify-center gap-2 sm:gap-6 ">

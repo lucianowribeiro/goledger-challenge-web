@@ -5,10 +5,10 @@ import { SearchInput } from "../ui/SearchInput";
 import { useSelectAsset } from "../../containers/SelectedAssetContainer/hooks";
 
 export const assetTypesMapping = {
-    song: 'Musicas',
-    artist: 'Artistas',
-    album: 'Albums',
-    playlist: 'Playlists'
+    song: 'Musica',
+    artist: 'Artista',
+    album: 'Album',
+    playlist: 'Playlist'
 }
 
 export function SearchBar() {
