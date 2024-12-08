@@ -1,11 +1,18 @@
-import { getAllAssetByType } from '../../api/routes/getAllAssetsByType'
 import type { AssetType } from '../../api/interfaces'
 import { createAppAsyncThunk } from '../../redux/withTypes'
-
-export const listAssetByType = createAppAsyncThunk(
-  'list/listAssetByType',
-  async (assetType: AssetType) => {
-    const result = await getAllAssetByType({ assetType })
-    return { result, assetType }
+import {  searchAsseRequest } from '../../api/routes/searchAsset'
+export const searchAsset = createAppAsyncThunk(
+  'list/searchAsset',
+  async ({
+    assetType,
+    assetName,
+    limit,
+  }: { assetType: AssetType; assetName?: string; limit?: number }) => {
+    const result = await searchAsseRequest({
+      assetType,
+      assetName,
+      limit,
+    })
+    return { result, assetType, assetName, limit }
   }
 )

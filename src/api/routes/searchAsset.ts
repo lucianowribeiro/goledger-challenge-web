@@ -1,15 +1,19 @@
-import type { AssetType } from '../../api/interfaces'
+import type { AssetType } from '../interfaces'
 import { client } from '../client'
 
-export async function getAllAssetByType({
+export async function searchAsseRequest({
   assetType,
-}: { assetType: AssetType }) {
+  limit,
+  assetName,
+}: { assetType: AssetType; limit?: number; assetName?: string }) {
   const data = await client.POST({
     payload: {
       query: {
         selector: {
           '@assetType': assetType,
+          name: assetName,
         },
+        limit,
       },
     },
     url: 'query/search',

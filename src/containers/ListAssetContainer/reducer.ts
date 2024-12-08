@@ -1,10 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit'
 import type { ListActions, ListState } from './interfaces'
-import { listAssetByType } from './actions'
+import { searchAsset } from './actions'
 
 const initialState: ListState = {
   assets: {},
-  assetId: null,
+  assetName: null,
+  assetType: null,
+  limit: null,
   status: 'idle',
   error: null,
 }
@@ -15,22 +17,35 @@ const listSlice = createSlice({
   reducers: {},
   extraReducers: builder => {
     builder
-      .addCase(listAssetByType.pending, state => {
+      .addCase(searchAsset.pending, state => {
         state.status = 'pending'
         state.error = null
       })
-      .addCase(listAssetByType.fulfilled, (state, action: ListActions) => {
-        state.status = 'succeeded'
+      .addCase(
+        searchAsset.fulfilled,
+        (
+          state,
+          { payload: { result, assetType, assetName, limit } }: ListActions
+        ) => {
+          state.status = 'succeeded'
 
-        state.assets = {
-          ...state.assets,
-          [action.payload.assetType]: action.payload.result,
+          state.assets = {
+            ...state.assets,
+            [assetType]: result,
+          }
+
+          state.assetType = assetType
+
+          if (!assetName) return
+
+          state.assetName = assetName
+
+          if (!limit) return
+
+          state.limit = limit
         }
-        if (!action.payload.assetId) return
-
-        state.assetId = action.payload.assetId
-      })
-      .addCase(listAssetByType.rejected, (state, action) => {
+      )
+      .addCase(searchAsset.rejected, (state, action) => {
         state.status = 'failed'
         state.error = action.payload as string
       })

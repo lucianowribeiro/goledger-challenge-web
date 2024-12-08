@@ -18,14 +18,17 @@ export interface ListState {
   assets: {
     [Key in AssetType]?: AssetListVariants
   }
-  assetId: string | null
+  assetName: string | null
+  assetType: string | null
+  limit: number | null
   status: 'idle' | 'pending' | 'succeeded' | 'failed'
   error: string | null
 }
 
 export interface ListActions
   extends PayloadAction<{
-    result: AssetListVariants
     assetType: AssetType
-    assetId?: string
+    limit?: number
+    result: AssetListVariants
+    assetName?: string
   }> {}

@@ -18,9 +18,8 @@ export function MultimediaFooter({ assetName, assetType }: { assetName: string, 
             <div className="flex justify-evenly gap-6">
                 <div className="flex flex-col gap-2 items-center cursor-pointer ">
                     <MusicalIcon className="size-6 text-zinc-200 hover:text-zinc-50 active:text-green-600" />
-                    <p className="flex flex-col gap-2 text-xs sm:flex-row font-semibold text-zinc-200 hover:text-zinc-50 capitalize w-44 truncate hover:font-bold">
+                    <p className="flex flex-col gap-2 text-xs sm:flex-row font-semibold text-zinc-200 hover:text-zinc-50 capitalize w-48 truncate hover:font-bold">
                         {assetName || `Nenhum(a) ${assetTypesMapping[assetType]} selecionado(a)`}
-
                     </p>
                 </div>
                 <div className="flex flex-col gap-1 sm:w-1/4 items-center">

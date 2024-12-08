@@ -1,24 +1,61 @@
 import { useSelector } from 'react-redux'
-import { useEffect } from 'react'
-import { selectAllAssetsByType } from './selectors'
+import { useCallback, useEffect } from 'react'
+import {
+  selectAssetName,
+  selectListAssetLimit,
+  selectSearchAsset,
+} from './selectors'
 import { selectAssetType } from '../SelectedAssetContainer/selectors'
-import { listAssetByType } from './actions'
 import { useAppDispatch } from '../../redux/hooks'
-import { AssetListVariants } from './interfaces'
-import { AssetType } from '../../api/interfaces'
+import { searchAsset } from './actions'
 
 export const useList = () => {
   const dispatch = useAppDispatch()
 
   const assetType = useSelector(selectAssetType)
-  const assets = useSelector(selectAllAssetsByType)
+  const assets = useSelector(selectSearchAsset)
+  const assetNameSelected = useSelector(selectAssetName)
+  const limitSelected = useSelector(selectListAssetLimit)
 
   useEffect(() => {
-    assetType && dispatch(listAssetByType(assetType))
-  }, [assetType, dispatch])
+    dispatch(
+      searchAsset({
+        assetType,
+        assetName: assetNameSelected ?? undefined,
+        limit: limitSelected ?? undefined,
+      })
+    )
+  }, [assetType, dispatch, assetNameSelected, limitSelected])
 
+  const handleSearchAssetByName = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      dispatch(
+        searchAsset({
+          assetName: e.target.value,
+          limit: limitSelected ?? undefined,
+          assetType,
+        })
+      )
+    },
+    [dispatch, assetType, limitSelected]
+  )
+
+  const handleSearchAssetByLimit = useCallback(
+    ({ limit }: { limit: number }) => {
+      dispatch(
+        searchAsset({
+          assetName: assetNameSelected ?? undefined,
+          limit,
+          assetType,
+        })
+      )
+    },
+    [dispatch, assetType, assetNameSelected]
+  )
   return {
     /* isLoading ,*/
+    handleSearchAssetByName,
+    handleSearchAssetByLimit,
     assets,
   }
 }
