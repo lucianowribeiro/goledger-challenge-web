@@ -9,8 +9,9 @@ import {
   selectSearchAssets,
 } from '../ListAssetContainer/selectors'
 import { searchAsset } from '../ListAssetContainer/actions'
-import { selectId } from './selectors'
+import { selectIds } from './selectors'
 import { useCallback } from 'react'
+import { resetState } from './reducer'
 
 const createAssetForm = z.object({
   assetType: z
@@ -23,37 +24,38 @@ const createAssetForm = z.object({
     .refine(value => typeof value === 'string', {
       message: 'Selecione uma das opções acima.',
     }),
-  name: z.string().min(1, 'O campo não pode estar vazio'),
-  year: z.string().min(1, 'O campo não pode estar vazio').optional(),
+  name: z.string(),
+  year: z.string().optional(),
   songs: z
     .string()
-    .min(1, 'O campo não pode estar vazio')
     .transform(value =>
       value
         .split(',')
         .map(name => name.trim())
         .filter(name => name.length > 0)
     )
+    /* .min(1, 'O campo  musicas não pode estar vazio')
     .refine(names => names.length > 0, {
       message: 'Por favor, insira pelo menos um nome válido.',
-    })
+    }) */
     .optional(),
-  country: z.string().min(1, 'O campo não pode estar vazio').optional(),
-  artist: z.string().min(1, 'O campo não pode estar vazio').optional(),
-  isPrivate: z.boolean().optional(),
-  album: z.string().min(1, 'O campo não pode estar vazio').optional(),
+  country: z.string().optional(),
+  artist: z.string().optional(),
+  isPrivate: z.union([z.literal('true'), z.literal('false')]).optional(),
+  album: z.string().optional(),
 })
 
 export type CreateAssetForm = z.infer<typeof createAssetForm>
 
 export const useCreateAsset = () => {
   const dispatch = useAppDispatch()
-  const assetId = useSelectors(selectId)
+  const assetIds = useSelectors(selectIds)
   const {
     register,
     handleSubmit,
     formState: { errors },
     watch,
+    reset,
   } = useForm<CreateAssetForm>({
     resolver: zodResolver(createAssetForm),
   })
@@ -70,18 +72,16 @@ export const useCreateAsset = () => {
       }
 
       if (data.assetType === 'album') {
-        dispatch(
-          findAsset({ assetType: data.assetType, assetName: data.artist })
-        )
+        dispatch(findAsset({ assetType: 'artist', assetName: data.artist }))
 
-        assetId &&
+        assetIds.join() &&
           dispatch(
             createAsset({
               assetType: data.assetType,
               name: data.name,
               artist: {
                 '@assetType': 'artist',
-                '@key': `artist:${assetId}`,
+                '@key': `artist:${assetIds.join()}`,
               },
               year: Number(data.year),
             })
@@ -89,46 +89,50 @@ export const useCreateAsset = () => {
       }
 
       if (data.assetType === 'song') {
-        dispatch(
-          findAsset({ assetType: data.assetType, assetName: data.album })
-        )
-        dispatch(
-          createAsset({
-            assetType: data.assetType,
-            name: data.name,
-            year: Number(data.year),
-            album: {
-              '@assetType': 'album',
-              '@key': `artist:${assetId}`,
-            },
-          })
-        )
+        dispatch(findAsset({ assetType: 'album', assetName: data.album }))
+
+        assetIds.join() &&
+          dispatch(
+            createAsset({
+              assetType: data.assetType,
+              name: data.name,
+              album: {
+                '@assetType': 'album',
+                '@key': `album:${assetIds.join()}`,
+              },
+            })
+          )
       }
 
       if (data.assetType === 'playlist') {
-        dispatch(
-          findAsset({
-            assetType: data.assetType,
-            assetName: data.songs?.[0] ?? undefined,
-          })
+        data.songs?.map((song: string) =>
+          dispatch(
+            findAsset({
+              assetType: 'song',
+              assetName: song ?? undefined,
+            })
+          )
         )
-        dispatch(
-          createAsset({
-            assetType: data.assetType,
-            name: data.name,
-            songs:
-              data.songs?.map(song => ({
-                name: song,
-                '@assetType': 'song',
-                '@key': `playlist:${assetId}`,
-              })) || [],
-            country: data.country,
-            isPrivate: Boolean(data.isPrivate),
-          })
-        )
+        assetIds &&
+          dispatch(
+            createAsset({
+              assetType: data.assetType,
+              name: data.name,
+              songs:
+                assetIds.map(assetId => ({
+                  '@assetType': 'song',
+                  '@key': `song:${assetId}`,
+                })) || [],
+              country: data.country,
+              isPrivate: Boolean(data.isPrivate),
+            })
+          )
       }
+      dispatch(resetState())
+      reset()
     },
-    [assetId, dispatch]
+
+    [assetIds, dispatch, reset]
   )
 
   return {

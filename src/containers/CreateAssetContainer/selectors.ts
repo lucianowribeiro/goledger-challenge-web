@@ -5,4 +5,4 @@ export const selectLoading = (state: RootState) =>
 
 export const selectError = (state: RootState) => state.list.error
 
-export const selectId = (state: RootState) => state.create.id
+export const selectIds = (state: RootState) => state.create.ids

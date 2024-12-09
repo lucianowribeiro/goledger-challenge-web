@@ -1,6 +1,7 @@
 import type { PayloadAction } from '@reduxjs/toolkit'
 import type {
   AssetCreatePayload,
+  AssetDeletePayload,
   AssetListAlbumResponse,
   AssetListArtistResponse,
   AssetListPlaylistResponse,
@@ -17,6 +18,4 @@ export interface CreateState {
   ids: string[] | []
 }
 
-export interface CreateAssetAction extends PayloadAction<AssetCreatePayload> {}
-export interface FindIdAction
-  extends PayloadAction<{ result: AssetListVariants }> {}
+export interface CreateAssetAction extends PayloadAction<AssetDeletePayload> {}

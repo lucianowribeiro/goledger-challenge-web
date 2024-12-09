@@ -7,13 +7,15 @@ const initialState: CreateState = {
   payload: null,
   status: 'idle',
   error: null,
-  id: null,
+  ids: [],
 }
 
 const createAssetSlice = createSlice({
   name: 'create',
   initialState,
-  reducers: {},
+  reducers: {
+    resetState: () => initialState,
+  },
   extraReducers: builder => {
     builder
       .addCase(createAsset.pending, state => {
@@ -34,7 +36,12 @@ const createAssetSlice = createSlice({
       })
       .addCase(findAsset.fulfilled, (state, action: FindIdAction) => {
         state.status = 'succeeded'
-        state.id = action.payload.result[0]['@key'].split(':')[1]
+
+        if (!action.payload.result) return
+        state.ids = [
+          ...state.ids,
+          action.payload.result[0]['@key'].split(':')[1],
+        ]
       })
       .addCase(findAsset.rejected, (state, action) => {
         state.status = 'failed'
@@ -42,5 +49,5 @@ const createAssetSlice = createSlice({
       })
   },
 })
-
+export const { resetState } = createAssetSlice.actions
 export default createAssetSlice.reducer

@@ -20,7 +20,6 @@ export function CreateDialog() {
     const assetTypeSelected = values().assetType
 
 
-
     function CreateFormsByType() {
         return {
             song: (
@@ -35,7 +34,7 @@ export function CreateDialog() {
                 </div>
             ),
             album: (
-                <div>
+                <div className="flex flex-col gap-5">
                     <div>
                         <Input {...register('artist')} inputClassName="px-4" type="text" placeholder={`Digite o nome do artista que deseja cadastrar`} />
                         <ErrorFeedBackForm errors={errors.name?.message} />
@@ -47,15 +46,15 @@ export function CreateDialog() {
                 </div>
             ),
             playlist: (
-                <div>
+                <div className="flex flex-col gap-5">
                     <div>
                         <Input {...register('songs')} inputClassName="px-4" type="text" placeholder={`Digite as musicas que deseja colocar na playlist(entre virgulas)`} />
                         <ErrorFeedBackForm errors={errors.songs?.message} />
                     </div>
-                    <fieldset className="flex flex-col gap-2">
-                        <span>Privado</span>
+                    <fieldset className="flex flex-col gap-2 ml-2">
+                        <span className="text-sm">Privado</span>
                         <div className="flex items-center gap-3">
-                            <Input {...register('isPrivate')} type="radio" id="isPrivate" name="isPrivate" className="bg-transparent w-5" value="true" />
+                            <Input {...register('isPrivate')} type="radio" id="isPrivate" name="isPrivate" className="bg-transparent w-5" value="true" checked />
                             <label htmlFor="isPrivate" className="text-sm w-full">Sim</label>
                         </div>
                         <div className="flex items-center gap-3">
@@ -79,6 +78,8 @@ export function CreateDialog() {
                 <ErrorFeedBackForm errors={errors.name?.message} />
                 {assetTypeSelected && CreateFormsByType()[assetTypeSelected]}
                 <SubmitButtons />
+
+
             </ form >
         }
             description="Cadastra abaixo a sua midia" title="Cadastro" />

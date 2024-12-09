@@ -4,7 +4,7 @@ import { Input } from "./Input";
 import { assetTypesMapping } from "./SearchBar";
 
 export function AssetTypeOptionsInput({ register }: { register: UseFormRegister<CreateAssetForm> }) {
-    return <fieldset className="flex flex-col gap-2">
+    return <fieldset className="flex flex-col gap-2 ml-2">
         <div className="flex items-center gap-3">
             <Input {...register('assetType')} type="radio" id="song" name="assetType" className="bg-transparent w-5 " value="song"
             />

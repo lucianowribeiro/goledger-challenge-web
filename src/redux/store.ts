@@ -2,16 +2,14 @@ import { type Action, configureStore, type ThunkAction } from '@reduxjs/toolkit'
 import selectReducer from '../containers/SelectedAssetContainer/reducer'
 import listReducer from '../containers/ListAssetContainer/reducer'
 import createReducer from '../containers/CreateAssetContainer/reducer'
-/* import deleteReducer from '../containers/DeleteAssetContainer/reducer'
-import updateReducer from '../containers/UpdateAssetContainer/reducer' */
+import deleteReducer from '../containers/DeleteAssetContainer/reducer'
 
 export const store = configureStore({
   reducer: {
     list: listReducer,
     select: selectReducer,
     create: createReducer,
-    /* delete: deleteReducer,
-    update: updateReducer, */
+    delete: deleteReducer,
   },
 })
 

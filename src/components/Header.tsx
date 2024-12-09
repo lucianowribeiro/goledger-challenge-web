@@ -15,9 +15,9 @@ export function Header() {
                         <p className="font-semibold"> Go Ledger - Challenge</p>
                     </div>
                     <div className="flex items-center gap-4 justify-end w-1/3">
-                        <div>
+                       {/*  <div>
                             <Button size="float">{<ListIcon size={20} />}</Button>
-                        </div>
+                        </div> */}
                         <DialogTrigger asChild>
                             <FloatButton />
                         </DialogTrigger>

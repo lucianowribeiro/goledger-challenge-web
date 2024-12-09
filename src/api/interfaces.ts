@@ -76,3 +76,8 @@ export interface AssetCreatePayload {
   isPrivate?: boolean
   album?: Record<string, string>
 }
+
+export interface AssetDeletePayload {
+  assetType: string
+  name: string
+}
