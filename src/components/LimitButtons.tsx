@@ -1,5 +1,5 @@
 import { Fragment } from "react/jsx-runtime"
-import { Button } from "../ui/Button"
+import { Button } from "./Button"
 
 const limitMapping = {
     5: 5,

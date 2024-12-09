@@ -1,6 +1,6 @@
 import type { AssetType } from '../../api/interfaces'
 import { createAppAsyncThunk } from '../../redux/withTypes'
-import {  searchAsseRequest } from '../../api/routes/searchAsset'
+import { searchAsseRequest } from '../../api/routes/searchAsset'
 export const searchAsset = createAppAsyncThunk(
   'list/searchAsset',
   async ({
@@ -16,3 +16,5 @@ export const searchAsset = createAppAsyncThunk(
     return { result, assetType, assetName, limit }
   }
 )
+
+

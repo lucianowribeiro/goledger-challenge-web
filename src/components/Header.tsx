@@ -1,6 +1,6 @@
-import { CreateDialog } from "../dialog/CreateDialog";
-import { Button } from "../ui/Button";
-import { FloatButton } from "../ui/FloatButton";
+import { Button } from "./Button";
+import { CreateDialog } from "./dialog/CreateDialog";
+import { FloatButton } from "./FloatButton";
 import { SearchBar } from "./SearchBar";
 import { Trigger as DialogTrigger, Root as Dialog } from "@radix-ui/react-dialog";
 import { IoIosList as ListIcon } from "react-icons/io";

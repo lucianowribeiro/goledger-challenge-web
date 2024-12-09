@@ -8,8 +8,8 @@ import { IoMdRepeat as RepeatIcon } from "react-icons/io";
 import { IoIosPause as PauseIcon } from "react-icons/io";
 import { IoMdVolumeHigh as VolumeIcon } from "react-icons/io";
 import { IoIosMusicalNotes as MusicalIcon } from "react-icons/io";
-import { assetTypesMapping } from "../common/SearchBar";
-import type { AssetType } from "../../api/interfaces";
+import { assetTypesMapping } from "./SearchBar";
+import type { AssetType } from "../api/interfaces";
 
 export function MultimediaFooter({ assetName, assetType }: { assetName: string, assetType: AssetType }) {
     const [playing, setPlaying] = useState<boolean>(false)

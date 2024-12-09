@@ -1,11 +1,11 @@
-import { Container } from "./components/ui/Container"
-import { Header } from "./components/common/Header"
-import { AssetList } from "./components/common/AssetList"
+import { Container } from "./components/Container"
 import 'dayjs/locale/pt-br'
 import dayjs from 'dayjs'
-import { MultimediaFooter } from "./components/ui/MultimediaFooter"
+import { MultimediaFooter } from "./components/MultimediaFooter"
 import { selectAssetName, selectAssetType } from "./containers/SelectedAssetContainer/selectors"
 import { useSelectors } from "./redux/hooks"
+import { Header } from "./components/Header"
+import { AssetList } from "./components/AssetList"
 
 dayjs.locale('pt-br')
 

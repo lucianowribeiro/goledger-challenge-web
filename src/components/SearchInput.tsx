@@ -1,7 +1,7 @@
 import { type ComponentProps, forwardRef } from "react";
-import type { AssetType } from "../../api/interfaces";
-import { Input } from "../ui/Input";
+import type { AssetType } from "../api/interfaces";
 import { CiSearch as SearchIcon } from "react-icons/ci";
+import { Input } from "./Input";
 
 
 export const SearchInput = forwardRef<HTMLInputElement, ComponentProps<'input'> & { assetType: AssetType }>(({ assetType, ...props }, ref) => {

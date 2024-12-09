@@ -1,9 +1,9 @@
 import { Fragment } from "react/jsx-runtime";
-import { Button } from "../ui/Button";
-import type { AssetType } from "../../api/interfaces";
-import { SearchInput } from "../ui/SearchInput";
-import { useSelectAsset } from "../../containers/SelectedAssetContainer/hooks";
-import { useList } from "../../containers/ListAssetContainer/hooks";
+import { Button } from "./Button";
+import type { AssetType } from "../api/interfaces";
+import { SearchInput } from "./SearchInput";
+import { useSelectAsset } from "../containers/SelectedAssetContainer/hooks";
+import { useList } from "../containers/ListAssetContainer/hooks";
 import { LimitActions } from "./LimitButtons";
 
 export const assetTypesMapping = {

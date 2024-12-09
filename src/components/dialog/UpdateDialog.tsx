@@ -1,5 +1,5 @@
-import { DialogContent } from "../ui/Dialog";
-import { Input } from "../ui/Input";
+import { DialogContent } from "../Dialog";
+import { Input } from "../Input";
 import { IoMdText as TextIcon } from "react-icons/io";
 
 type UpdateDialogProps = {

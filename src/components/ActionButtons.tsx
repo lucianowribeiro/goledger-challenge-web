@@ -1,10 +1,10 @@
-import { Button } from "../ui/Button";
+import { Button } from "./Button";
 import { MdDelete as DeleteIcon } from "react-icons/md";
 import { FaPen as UpdateIcon } from "react-icons/fa";
 import { Trigger } from "@radix-ui/react-dialog";
 import { Root as Dialog } from "@radix-ui/react-dialog";
-import { UpdateDialog } from "../dialog/UpdateDialog";
-import { DeleteDialog } from "../dialog/DeleteDialog";
+import { UpdateDialog } from "./dialog/UpdateDialog";
+import { DeleteDialog } from "./dialog/DeleteDialog";
 
 export function ActionButtons() {
     return (

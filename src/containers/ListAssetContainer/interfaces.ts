@@ -6,7 +6,6 @@ import type {
   AssetListSongResponse,
   AssetType,
 } from '../../api/interfaces'
-import { assetTypesMapping } from '../../components/common/SearchBar'
 
 export type AssetListVariants =
   | AssetListSongResponse['result']

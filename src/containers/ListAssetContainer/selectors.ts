@@ -6,9 +6,10 @@ export const selectSearchAsset = (state: RootState) =>
 export const selectLoading = (state: RootState) =>
   state.list.status === 'idle' || state.list.status === 'pending'
 
-export const selectEmpty = (state: RootState) => selectSearchAsset.length <= 0
-
 export const selectError = (state: RootState) => state.list.error
 
 export const selectAssetName = (state: RootState) => state.list.assetName
 export const selectListAssetLimit = (state: RootState) => state.list.limit
+
+export const selectSearchAssets = (state: RootState) =>
+  state.list.assets && state.list.assets

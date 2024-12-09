@@ -15,6 +15,7 @@ export async function searchAsseRequest({
         },
         limit,
       },
+      resolve: true,
     },
     url: 'query/search',
   })

@@ -1,4 +1,4 @@
-import { DialogContent } from "../ui/Dialog";
+import { DialogContent } from "../Dialog";
 
 type DeleteDialogProps = {
     assetType: string

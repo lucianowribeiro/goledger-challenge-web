@@ -38,7 +38,6 @@ const listSlice = createSlice({
 
           state.assetName = !assetName ? null : assetName
 
-          console.log(state.assetName)
           if (!limit) return
 
           state.limit = limit

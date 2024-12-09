@@ -1,7 +1,8 @@
 import { Close as DialogClose, Content, Description as DialogDescription, Overlay as DialogOverlay, Portal as DialogPortal, Title as DialogTitle, } from "@radix-ui/react-dialog";
-import { Button } from "../ui/Button";
 import type { ReactNode } from "react";
 import { IoMdClose as CloseIcon } from "react-icons/io";
+import { Button } from "./Button";
+import { SubmitButtons } from "./SubmitButtons";
 
 type DialogContentProps = {
     title: string,
@@ -24,12 +25,7 @@ export function DialogContent({ title, description, content }: DialogContentProp
                         </div>
                         <DialogDescription className="text-sm">{description}</DialogDescription>
                         {content}
-                        <div className="flex gap-5 justify-evenly sm:justify-center">
-                            <DialogClose asChild><Button variant="tertiary" className="w-20">Fechar</Button></DialogClose>
-                            <Button variant="secondary" className=" w-36">Confirmar</Button>
-                        </div>
                     </div>
-
                 </aside>
             </Content>
         </DialogPortal>
