@@ -5,20 +5,20 @@ import {
   selectAssetType,
 } from '../SelectedAssetContainer/selectors'
 import { updateAsset } from './actions'
+import { selectSearchAsset } from '../ListAssetContainer/selectors'
 
 export const useUpdateAsset = () => {
   const dispatch = useAppDispatch()
   const assetName = useSelectors(selectAssetName)
-  const assetType = useSelectors(selectAssetType)
+  const assets = useSelectors(selectSearchAsset)
 
   const handleUpdateAsset = useCallback(() => {
     dispatch(
       updateAsset({
-        assetType,
-        name: assetName,
+        ...assets?.filter(asset => asset.name === assetName)[0],
       })
     )
-  }, [assetName, assetType, dispatch])
+  }, [assetName, dispatch, assets])
 
   return {
     assetName,

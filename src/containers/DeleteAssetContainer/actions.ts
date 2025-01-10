@@ -1,4 +1,4 @@
-import type { AssetCreatePayload, AssetDeletePayload } from '../../api/interfaces'
+import type { AssetDeletePayload } from '../../api/interfaces'
 import { createAppAsyncThunk } from '../../redux/withTypes'
 import { deleteAsseRequest } from '../../api/routes/deleteAsset'
 

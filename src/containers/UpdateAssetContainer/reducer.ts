@@ -1,8 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit'
-import type { CreateAssetAction, CreateState } from './interfaces'
+import type { UpdateAssetAction, UpdateState } from './interfaces'
 import { updateAsset } from './actions'
 
-const initialState: CreateState = {
+const initialState: UpdateState = {
   payload: null,
   status: 'idle',
   error: null,
@@ -19,7 +19,7 @@ const updateAssetSlice = createSlice({
         state.status = 'pending'
         state.error = null
       })
-      .addCase(updateAsset.fulfilled, (state, action: CreateAssetAction) => {
+      .addCase(updateAsset.fulfilled, (state, action: UpdateAssetAction) => {
         state.status = 'succeeded'
         state.payload = action.payload
       })

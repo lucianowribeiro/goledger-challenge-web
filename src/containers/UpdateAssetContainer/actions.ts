@@ -1,17 +1,16 @@
-import type { AssetCreatePayload } from '../../api/interfaces'
+import type { AssetUpdatePayload } from '../../api/interfaces'
 import { createAppAsyncThunk } from '../../redux/withTypes'
 import { updateAsseRequest } from '../../api/routes/updateAsset'
 
 export const updateAsset = createAppAsyncThunk(
   'update/updateAsset',
-  async ({ assetType, name }: AssetCreatePayload) => {
+  async ({ ...payload }: AssetUpdatePayload) => {
     await updateAsseRequest({
-      assetType,
-      name,
+      ...payload,
     })
+    
     return {
-      assetType,
-      name,
+      ...payload,
     }
   }
 )
