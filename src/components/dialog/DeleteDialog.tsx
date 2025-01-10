@@ -11,7 +11,7 @@ export function DeleteDialog() {
 
     return (
         <DialogContent
-            description={`Deseja excluir este asset ${assetName} ?`} title="Confirmação" content={
+            description={<span>Deseja excluir o(a) <strong>{assetName}</strong></span>} title="Confirmação" content={
 
                 <div>
                     <SubmitButtons handleDeleteAsset={handleDeleteAsset} />

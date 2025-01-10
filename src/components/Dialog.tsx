@@ -6,7 +6,7 @@ import { SubmitButtons } from "./SubmitButtons";
 
 type DialogContentProps = {
     title: string,
-    description: string,
+    description: string | ReactNode,
     content?: ReactNode
 
 

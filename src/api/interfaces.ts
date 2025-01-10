@@ -77,7 +77,6 @@ export interface AssetCreatePayload {
   album?: Record<string, string>
 }
 
-export interface AssetDeletePayload {
-  assetType: string
-  name: string
-}
+export type AssetDeletePayload = Record<string, any>
+
+export type AssetUpdatePayload =  Record<string, any>
